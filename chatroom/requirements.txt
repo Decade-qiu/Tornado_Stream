@@ -1,0 +1,9 @@
+tornado
+mysql-connector-python
+sqlalchemy
+sockjs-tornado
+redis
+wtForms
+werkzeug
+
+# pip install -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com -r requirements.txt
