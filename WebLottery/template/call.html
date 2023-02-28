@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <!-- <script th:src="@{static/js/login.js}"></script> -->
+</head>
+<body>
+<div id="bigbox">
+    <div id="banner">
+        <img src="../static/img/bg.jpg" width="50" alt="">
+    </div>
+    <!-- <table align="center" border="1" cellpadding="10" cellspacing="0"
+           width="1000">
+        <tr style="background-color:rgba(255, 255, 255, 0.594)">
+            <th>你当前的Ip地址</th> <th>你访问该页面次数</th>
+        </tr>
+        <tr style="background-color:rgba(255, 255, 255, 0.594)" th:each="cnt:${blog}">
+            <td th:text="${cnt.ip}"></td>
+            <td th:text="${cnt.c}"></td>
+        </tr>
+    </table> -->
+    <nav>
+        <a class="dangqian" href="">首页</a>
+        <a href="duanwen.html">短文</a>
+        <a href="rizhi.html">日志</a>
+        <a href="liuyan.html">留言板</a>
+    </nav>
+    <div id="main">
+        <div id="main_left">
+            <!-- <h2>关于我</h2>
+            <img src="img/takina.jpg" alt="">
+            <p>
+                <span>姓名</span>:
+                <font color="darkmagenta" size="5">仇忠骏 2027406022</font><br>
+                <span>性别</span>:男<br>
+                <span>爱好</span>:唱 跳 rap 篮球<br>
+                <span>性格</span>:开朗<br>
+                <span>家乡</span>:扬州<br>
+                <span>专业</span>:软件工程
+            </p> -->
+            <h2>抽奖配置</h2>
+            <form method="post" action="/info" enctype="multipart/form-data">
+            <p>设置一等奖中奖人数:<br><input type="number" name="num1">
+            <br>
+            </p>
+            <p>设置二等奖中奖人数:<br><input type="number" name="num2">
+            <br>
+            </p>
+            <p>设置三等奖中奖人数:<br><input type="number" name="num3">
+            <br>
+            </p>
+            <p>参与抽奖人员名单（注意：文件中请用‘，’隔开人名）:<br><input type="file" name="people"></p>
+            <input type="submit" value="ok,submit my information">
+            </form>
+        </div>
+        <div id="main_right">
+            <h2>中将信息</h2>
+            <form method="post" action="/choujiang">
+                <h2>获奖信息如下</h2>
+                <p>一等奖中奖名单： 共{{num1}}人， {{people1}}</p>
+                <p>二等奖中奖名单： 共{{num2}}人，{{people2}}</p>
+                <p>三等奖中奖名单： 共{{num3}}人，{{people3}}</p>
+                <p>Thanks for your participation. These people take part in the lottery: {{people_in}}</p>
+                <br>
+                <br>
+                <p>显示中奖人员名单<br><input type="submit" value="开始抽奖"></p>
+            </form>
+            <img src="../static/img/cat.gif" alt="">
+        </div>
+    </div>
+    <div id="luxing">
+        <h2>旅行生活</h2>
+        <div>
+            <div id="picture">
+                <img src="../static/img/p1.jpg" alt="">
+                <p>东吴门</p>
+            </div>
+            <div id="picture">
+                <img src="../static/img/p3.jpg" alt="">
+                <p>
+                    在苏大
+                </p>
+            </div>
+            <div id="picture">
+                <img src="../static/img/p2.jpg" alt="">
+                <p>
+                    看夕阳
+                </p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>
+            版权所有©Zhongjun Qiu.苏州大学
+        </p>
+    </footer>
+</div>
+</body>
+</html>

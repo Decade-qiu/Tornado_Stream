@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{static_url('style.css')}}">
+    <!-- <script th:src="@{static/js/login.js}"></script> -->
+</head>
+<body>
+<div id="bigbox">
+    <div id="banner">
+<!--        <img src="{{static_url('img/bg_login2.svg')}}" width="50" alt="">-->
+    </div>
+    <!-- <table align="center" border="1" cellpadding="10" cellspacing="0"
+           width="1000">
+        <tr style="background-color:rgba(255, 255, 255, 0.594)">
+            <th>你当前的Ip地址</th> <th>你访问该页面次数</th>
+        </tr>
+        <tr style="background-color:rgba(255, 255, 255, 0.594)" th:each="cnt:${blog}">
+            <td th:text="${cnt.ip}"></td>
+            <td th:text="${cnt.c}"></td>
+        </tr>
+    </table> -->
+    <nav>
+        <a class="dangqian" href="">首页</a>
+        <a href="duanwen.html">短文</a>
+        <a href="rizhi.html">日志</a>
+        <a href="liuyan.html">留言板</a>
+    </nav>
+    <div id="main">
+        <div id="main_left">
+            <!-- <h2>关于我</h2>
+            <img src="img/takina.jpg" alt="">
+            <p>
+                <span>姓名</span>:
+                <font color="darkmagenta" size="5">仇忠骏 2027406022</font><br>
+                <span>性别</span>:男<br>
+                <span>爱好</span>:唱 跳 rap 篮球<br>
+                <span>性格</span>:开朗<br>
+                <span>家乡</span>:扬州<br>
+                <span>专业</span>:软件工程
+            </p> -->
+            <h2>抽奖配置</h2>
+            <form method="post" action="/info" enctype="multipart/form-data">
+            <p>设置一等奖中奖人数:<br><input type="number" name="num1">
+            <br>
+            </p>
+            <p>设置二等奖中奖人数:<br><input type="number" name="num2">
+            <br>
+            </p>
+            <p>设置三等奖中奖人数:<br><input type="number" name="num3">
+            <br>
+            </p>
+            <p>参与抽奖人员名单（注意：文件中请用‘，’隔开人名）:<br><input type="file" name="people"></p>
+            <input type="submit" value="ok,submit my information">
+            </form>
+        </div>
+        <div id="main_right">
+            <h2>热爱生活</h2>
+            <p>
+                一、岁月从来不曾静好，只是有人在替你背负枷锁，含泪前行。也许是父母，也许是朋友，也许是陌生人……无论是谁，请记得常怀感恩之心。
+            </p>
+            <p>
+                二、这个世界并不完美，甚至有点残酷。你无法决定下一段旅途遇见的是好事还是坏事，可你能决定面对它们的态度。你看这个世界的角度，决定了这个世界给你的温度。
+            </p>
+            <p>
+                三、总会有一件事让你瞬间长大，也总会有一个人让你泪如雨下。愿你早日领教这个世界的深深恶意，让自己活得开心得意。
+            </p>
+            <p>
+                四、想要与众不同，却总随遇而安，想要做很多未做的事，却在现实棘手的吃喝拉撒前低下了头，我们间歇性热血满腔，长时间迷茫犯懒，别等了，再努力试试看！
+            </p>
+            <img src="{{static_url('img/cat.gif')}}" alt="">
+        </div>
+    </div>
+    <div id="luxing">
+        <h2>旅行生活</h2>
+        <div>
+            <div id="picture">
+                <img src="{{static_url('img/p1.jpg')}}" alt="">
+                <p>东吴门</p>
+            </div>
+            <div id="picture">
+                <img src="{{static_url('img/p3.jpg')}}" alt="">
+                <p>
+                    在苏大
+                </p>
+            </div>
+            <div id="picture">
+                <img src="{{static_url('img/p2.jpg')}}" alt="">
+                <p>
+                    看夕阳
+                </p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>
+            版权所有©Zhongjun Qiu.苏州大学
+        </p>
+    </footer>
+</div>
+</body>
+</html>
