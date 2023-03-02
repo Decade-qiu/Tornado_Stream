@@ -22,7 +22,10 @@ people_reward3 = 0  # 三等奖中奖人数
 flag1 = ""  # 一等奖是否一次性抽完,yes:一次性抽完；no：分批次抽完
 flag2 = ""  # 二等奖是否一次性抽完,yes:一次性抽完；no：分批次抽完
 flag3 = ""  # 三等奖是否一次性抽完,yes:一次性抽完；no：分批次抽完
-
+pfull = ""
+p1 = ""
+p2 = ""
+p3 = ""
 
 def fun1(peoplestr):
     # 字符串处理函数，主要将文件内容（名字）存放到列表中
@@ -42,8 +45,7 @@ class infoHandler(tornado.web.RequestHandler):  # 信息处理与提取
         num_1 = self.get_argument("num1")
         num_2 = self.get_argument("num2")
         num_3 = self.get_argument("num3")
-        global people_reward1, people_reward2, people_reward3, flag1, flag2, flag3
-        people_reward1 = int(num_1)
+        global people_reward1, people_reward2, people_reward3, pfull, p1, p2, p3
         people_reward2 = int(num_2)
         people_reward3 = int(num_3)
         num = int(num_1) + int(num_2) + int(num_3)  # 一共有多少人中奖
@@ -58,8 +60,8 @@ class infoHandler(tornado.web.RequestHandler):  # 信息处理与提取
         #  people.decode('ascii')
         print(people)
         print(type(people))  # <class 'bytes'>
-
         people_str = people.decode(encoding='utf-8')
+        pfull = people_str
         print("people1", people_str, type(people_str))  # <class 'str'>
 
         results = fun1(people_str)
@@ -94,6 +96,9 @@ class infoHandler(tornado.web.RequestHandler):  # 信息处理与提取
         people_reward2_name = people_2
         global people_reward3_name
         people_reward3_name = people_3
+        p1 = ",".join(people_1)
+        p2 = ",".join(people_2)
+        p3 = ",".join(people_3)
         self.render("./template/call.html", num1=num_1, people1="  ?  ", num2=num_2, people2="  ?  ", num3=num_3,
                     people3="  ?  ", people_in=people)
         # global falg
@@ -106,10 +111,11 @@ class ChoujiangHandler(tornado.web.RequestHandler):
         global falg, flag1, flag2, flag3
         global people_reward1_name, people_reward2_name, people_reward3_name
         global people_reward1, people_reward2, people_reward3
-
-        self.render("./template/call.html", num1=people_reward1, people1=people_reward1_name, num2=people_reward2,
-                    people2=people_reward2_name, num3=people_reward3,
-                    people3=people_reward3_name, people_in=people_name)
+        global p1, p2, p3, pfull
+        print(p1, p2, p3, pfull)
+        self.render("./template/call.html", num1=people_reward1, people1=p1, num2=people_reward2,
+                    people2=p2, num3=people_reward3,
+                    people3=p3, people_in=pfull)
 
 
 handlers = [

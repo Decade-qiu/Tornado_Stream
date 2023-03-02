@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link href="{{static_url('style.css')}}" rel="stylesheet">
+    <link href="{{static_url('basic-grey.css')}}" rel="stylesheet">
     <!-- <script th:src="@{static/js/login.js}"></script> -->
 </head>
 <body>
@@ -44,33 +45,150 @@
                 <span>专业</span>:软件工程
             </p> -->
             <h2>抽奖配置</h2>
-            <form method="post" action="/info" enctype="multipart/form-data">
-            <p>设置一等奖中奖人数:<br><input type="number" name="num1">
-            <br>
-            </p>
-            <p>设置二等奖中奖人数:<br><input type="number" name="num2">
-            <br>
-            </p>
-            <p>设置三等奖中奖人数:<br><input type="number" name="num3">
-            <br>
-            </p>
-            <p>参与抽奖人员名单（注意：文件中请用‘，’隔开人名）:<br><input type="file" name="people"></p>
-            <input type="submit" value="ok,submit my information">
+            <form action="/info" enctype="multipart/form-data" class="basic-grey" method="post">
+
+
+                <h1><span>Please fill all the texts in the fields.</span></h1>
+                <br><br>
+                <label>
+
+                    <span>Themplate :</span>
+
+                    <select id="template" name="themplate" onchange="changeStyle();">
+
+                        <option value="basic-grey">basic-grey</option>
+
+                        <option value="elegant-aero">elegant-aero</option>
+
+                        <option value="smart-green">smart-green</option>
+
+                        <option value="white-pink">white-pink</option>
+
+                        <option value="bootstrap-frm">bootstrap-frm</option>
+
+                        <option value="dark-matter">dark-matter</option>
+
+                    </select>
+
+                </label>
+<br><br>
+                <label>
+
+                    <span>一等奖 :</span>
+                    <input id="name" name="num1" placeholder="1~3" type="number"/>
+
+                </label>
+                <br><br>
+                <label>
+
+                    <span>二等奖 :</span>
+
+                    <input id="email" name="num2" placeholder="1~5" type="number"/>
+
+                </label>
+                <br><br>
+                <label>
+
+                    <span>三等奖 :</span>
+
+                    <input id="message" name="num3" placeholder="1~7" type="number"/>
+
+                </label>
+                <br><br>
+                <label>
+
+                    <span>人员名单 :</span>
+                    <input id="message" name="people" placeholder="file" type="file"/>
+
+                </label>
+                <br><br>
+                <label>
+
+                    <span>&nbsp;</span>
+
+                    <input class="button" type="submit" value="Send"/>
+
+                </label>
+
             </form>
         </div>
         <div id="main_right">
-            <h2>中将信息</h2>
-            <form method="post" action="/choujiang">
-                <h2>获奖信息如下</h2>
-                <p>一等奖中奖名单： 共{{num1}}人， {{people1}}</p>
-                <p>二等奖中奖名单： 共{{num2}}人，{{people2}}</p>
-                <p>三等奖中奖名单： 共{{num3}}人，{{people3}}</p>
-                <p>Thanks for your participation. These people take part in the lottery: {{people_in}}</p>
+            <h2>获奖信息如下</h2>
+            <form action="/choujiang" class="basic-grey" method="post">
+                <h1><span>Congratulations</span></h1>
+                <label>
+
+                    <span>Themplate :</span>
+
+                    <select id="template" name="themplate" onchange="changeStyle();">
+
+                        <option value="basic-grey">basic-grey</option>
+
+                        <option value="elegant-aero">elegant-aero</option>
+
+                        <option value="smart-green">smart-green</option>
+
+                        <option value="white-pink">white-pink</option>
+
+                        <option value="bootstrap-frm">bootstrap-frm</option>
+
+                        <option value="dark-matter">dark-matter</option>
+
+                    </select>
+
+                </label>
+<br>
+                <label>
+
+                    <span style='font-size:20px'>一等奖 :</span>
+                    <br>
+                    <div id = "p1" style='font-size:20px; color:red'>
+
+                    </div>
+
+                </label>
+                <br><br>
+                <label>
+
+                    <span style='font-size:20px'>二等奖 :</span>
+                    <br>
+                    <div id = "p2" style='font-size:20px; color:blue'>
+
+                    </div>
+
+                </label>
+                <br><br>
+                <label>
+
+                    <span style='font-size:20px'>三等奖 :</span>
+                    <br>
+                    <div id = "p3" style='font-size:20px; color:green'>
+
+                    </div>
+
+                </label>
                 <br>
                 <br>
-                <p>显示中奖人员名单<br><input type="submit" value="开始抽奖"></p>
+                <label>
+
+                    <span>&nbsp;</span>
+
+                    <input class="button" type="submit" value="开始抽奖"/>
+
+                </label>
+                <br>
+                <br>
+                <label>
+
+
+                    <span>&nbsp;</span>
+
+                    <input class="button" type="button" value="停止滚动" onclick="stop()"/>
+
+                </label>
+
             </form>
-            <img src="../static/img/cat.gif" alt="">
+<!--            <img src="../static/img/cat.gif" alt="">-->
         </div>
     </div>
     <div id="luxing">
@@ -100,5 +218,60 @@
         </p>
     </footer>
 </div>
+
+<script>
+    var nam1="{{people1}}".split(",");//参与者名单
+    var nam2="{{people2}}".split(",");//参与者名单
+    var nam3="{{people3}}".split(",");//参与者名单
+    var nameArray="{{people_in}}".split(",");//参与者名单
+    var whoGetTheMysteryAward=[];
+    var w1='', w2='', w3='';
+    var timer1, timer2, timer3, flag;
+    setTimeout(creatNameForAward(),1000);
+    function creatNameForAward(){
+        flag=1;
+        timer1 = setInterval(function(){
+            document.getElementById('p1').innerText= getNameForAward(nam1.length);
+        },50);
+        timer2 = setInterval(function(){
+            document.getElementById('p2').innerText= getNameForAward(nam2.length);
+        },50);
+        timer3 = setInterval(function(){
+            document.getElementById('p3').innerText= getNameForAward(nam3.length);
+        },50);
+    }
+
+    //停止滚动方法
+    function stop(){
+
+        clearInterval(timer1);
+        clearInterval(timer2);
+        clearInterval(timer3);
+        document.getElementById('p1').innerText=nam1;
+        document.getElementById('p2').innerText=nam2;
+        document.getElementById('p3').innerText=nam3;
+        flag++;
+        return null;
+    }
+
+    //随机获取一个人的名字
+    function getNameForAward(x){
+        var ans = "";
+        for (var i = 0;i < x;i++){
+            var num = Math.floor(Math.random()*(nameArray.length-1));
+            ans += nameArray[num];
+        }
+        return ans;
+    }
+
+    function exclude(all, del) {
+        for(let j=0;j<all.length;j++){
+            if(all[j]===del){
+                all.splice(j,1);
+            }
+        }
+        return all;
+   }
+</script>
 </body>
 </html>

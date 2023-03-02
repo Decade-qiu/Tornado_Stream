@@ -55,7 +55,7 @@ nav a:hover {
 }
 
 #main_left {
-    width: 300px;
+    width: 400px;
     display: inline-block;
     background-color: #86aacb;
     float: left;
@@ -85,7 +85,7 @@ h2 {
 
 #main_right {
     position: relative;
-    width: 680px;
+    width: 500px;
     margin-left: 20px;
     display: inline-block;
     height: 200px;
