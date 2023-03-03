@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--指定网页支持响应式：电脑和手机自适应-->
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link href="{{ static_url('bw/dist/sketchy/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('css/common.css') }}" rel="stylesheet">
+    <title>{{ data['title'] }}</title>
+    {% block head %}{% end %}
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-primary justify-content-between">
+    <div class="container">
+        <a class="navbar-brand" href="/" id="site_name">弹幕视频/实时聊天</a>
+        <form class="form-inline">
+            <a class="btn btn-success my-2 my-sm-0" href="/login/">登录</a>
+            &nbsp;
+            <a class="btn btn-danger my-2 my-sm-0" href="/regist/">注册</a>
+        </form>
+    </div>
+</nav>
+
+<div class="container" id="main">
+    <div class="row">
+        {% block content %}{% end %}
+        <div class="col-md-3 pad-left">
+            <div class="input-group mb-3">
+                <input aria-describedby="basic-addon2" aria-label="Recipient's username" class="form-control"
+                       placeholder="请输入搜索内容！" type="text">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">搜索</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    技术架构
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <tr>
+                            <td class="text-primary" style="width: 50%">编程语言：</td>
+                            <td class="text-danger">Python</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">数据库：</td>
+                            <td class="text-danger">MySQL</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">内存缓存：</td>
+                            <td class="text-danger">Redis</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">反向代理：</td>
+                            <td class="text-danger">Nginx</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">操作系统：</td>
+                            <td class="text-danger">CentOS</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">后端框架：</td>
+                            <td class="text-danger">Tornado</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">表单验证：</td>
+                            <td class="text-danger">WTForms</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">数据库ORM：</td>
+                            <td class="text-danger">SQLAlchemy</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">加密工具：</td>
+                            <td class="text-danger">Werkzeug</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">WebSocket通信：</td>
+                            <td class="text-danger">SockJS-Tornado</td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary">前端界面：</td>
+                            <td class="text-danger">HTML/JS/CSS</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron foot-section">
+    <hr class="my-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <img class="lazyload blur-up img-fluid mx-auto d-block"
+                     data-src="{{ static_url('images/face.png') }}">
+            </div>
+            <div class="col-md-4">
+                <h5>张金龙</h5>
+                <p class="info-text">— 人生苦短，我用Python！</p>
+                <p class="info-text">微信：13700632835</p>
+                <p class="info-text">手机：13700632835</p>
+                <p class="info-text">邮箱：1780316635@qq.com</p>
+                <p class="info-text">编程爱好者，多年丰富的项目经验，擅长python、php、golang、centos、reactnative等技术。</p>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="text-center info-text">站长微信</p>
+                        <img data-src="{{ static_url('images/weixin.jpg')}}"
+                             class="lazyload blur-up img-fluid mx-auto d-block">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-center info-text">站长QQ</p>
+                        <img data-src="{{ static_url('images/qq.jpg') }}"
+                             class="lazyload blur-up img-fluid mx-auto d-block">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-center info-text">python问答QQ群</p>
+                        <img data-src="{{ static_url('images/qq_group.jpg') }}"
+                             class="lazyload blur-up img-fluid mx-auto d-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="my-4">
+    <div class="container">
+        <ul class="list-inline text-center">
+            <li class="info-text"><a href="http://www.miibeian.gov.cn/" target="_blank">滇ICP备17011280号</a>
+            </li>
+            <li class="info-text">© 2018-2019 张金龙[python拓荒者]</li>
+        </ul>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/lazysizes/4.0.2/lazysizes.min.js"></script>
+<script src="https://cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
+{% block foot %}{% end %}
+</body>
+</html>
