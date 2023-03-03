@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ static_url('dplayer/DPlayer.min.css') }}">
+<script src="{{ static_url('dplayer/DPlayer.min.js') }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ static_url('ue/ueditor.config.js') }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ static_url('ue/ueditor.all.min.js') }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ static_url('ue/lang/zh-cn/zh-cn.js') }}"></script>
+{% end %}
+
+{% block content %}
+<div class="col-md-9 pad-right">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li aria-current="page" class="breadcrumb-item active">视频名称</li>
+        </ol>
+    </nav>
+    <div id="dplayer"></div>
+    <div class="row" style="margin-top: 12px;">
+        <!--<div class="col-md-2 pad-right">
+            <span>在线用户</span>
+            <div class="card" id="user-card">
+                <div class="card-body" id="user-list">
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                    <div class="text-center"><img data-src="holder.js/60x60" class="rounded-circle"></div>
+                </div>
+            </div>
+        </div>-->
+        <div class="col-md-12">
+            <div class="card" id="chat-card">
+                <div class="card-header">聊天消息</div>
+                <div class="card-body" id="chat-list">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="media">
+                                <img class="mr-3 rounded-circle" data-src="holder.js/60x60">
+                                <div class="media-body">
+                                    <h6 class="user-nickname">会员昵称</h6>
+                                    <div class="alert alert-info" role="alert">
+                                        聊天内容
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h6 class="user-nickname text-right">会员昵称</h6>
+                                    <div class="alert alert-success" role="alert">
+                                        聊天内容
+                                    </div>
+                                </div>
+                                <img class="ml-3 rounded-circle" data-src="holder.js/60x60">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="media">
+                        <img class="mr-3" data-src="holder.js/60x60">
+                        <div class="media-body">
+                            <h6>会员昵称</h6>
+                            <div id="editor" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <a class="btn btn-success float-right" href="#" style="margin-top: 12px;">发送消息</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}
+
+{% block foot %}
+<script>
+    var ue = UE.getEditor('editor', {
+        toolbars: [
+            ['fullscreen', 'emotion']
+        ]
+    });
+
+    function dplayer(vurl) {
+        window.dp = new DPlayer({
+            container: document.getElementById('dplayer'),
+            screenshot: true,
+            autoplay: false,
+            theme: '#FADFA3',
+            loop: true,
+            lang: 'zh-cn',
+            hotkey: true,
+            preload: 'auto',
+            volume: 0.7,
+            mutex: true,
+            video: {
+                url: vurl,
+            },
+            danmaku: {
+                id: '1',
+                api: 'http://www.wenmaai.com/video/barrage/'
+            }
+        });
+    }
+
+    dplayer("http://www.wenmaai.com/static/uploads/20180806163908c1f2749bfe2f4c0495c8bb84d9b64a4b.mp4");
+
+</script>
+{% end %}
