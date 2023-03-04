@@ -8,26 +8,47 @@
             <form id="form-data">
                 <div class="form-group">
                     <label>昵称</label>
-                    <input class="form-control form-width" placeholder="请输入账号！" type="text">
+                    {% raw xsrf_form_html() %}
+                    <input class="form-control form-width"
+                           name="name"
+                           placeholder="请输入账号！"
+                           type="text">
+                    <p class="text-danger" id="error_name"></p>
                 </div>
                 <div class="form-group">
                     <label>密码</label>
-                    <input class="form-control form-width" placeholder="请输入密码！" type="password">
+                    <input class="form-control form-width"
+                           name="pwd"
+                           placeholder="请输入密码！"
+                           type="password">
+                    <p class="text-danger" id="error_pwd"></p>
                 </div>
                 <div class="form-group">
                     <label>确认密码</label>
-                    <input class="form-control form-width" placeholder="请输入确认密码！" type="password">
+                    <input class="form-control form-width"
+                           name="repwd"
+                           placeholder="请输入确认密码！"
+                           type="password">
+                    <p class="text-danger" id="error_repwd"></p>
                 </div>
                 <div class="form-group">
                     <label>邮箱</label>
-                    <input class="form-control form-width" placeholder="请输入邮箱！" type="email">
+                    <input class="form-control form-width"
+                           name="email"
+                           placeholder="请输入邮箱！"
+                           type="email">
+                    <p class="text-danger" id="error_email"></p>
                 </div>
                 <div class="form-group">
                     <label>手机号码</label>
-                    <input class="form-control form-width" placeholder="请输入手机号码！" type="text">
+                    <input class="form-control form-width"
+                           name="phone"
+                           placeholder="请输入手机号码！"
+                           type="text">
+                    <p class="text-danger" id="error_phone"></p>
                 </div>
                 <div class="form-group">
-                    <a class="btn btn-primary" href="#">注册</a>
+                    <a class="btn btn-primary" href="javascript:void(0)" id="btn-sub">注册</a>
                 </div>
             </form>
         </div>
@@ -35,3 +56,11 @@
 </div>
 {% end %}
 
+{% block foot %}
+<script src="{{ static_url('js/request.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        request("/regist/", "/login/", ['name', 'pwd', 'repwd', 'email', 'phone'], "注册成功！");
+    })
+</script>
+{% end %}

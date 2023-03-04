@@ -63,11 +63,12 @@ class CRUD:
             session.add(user)
         except Exception as e:
             session.rollback()
+            return False
         else:
             session.commit()
+            return True
         finally:
             session.close()
-        return True
 
     # 登录验证
     @staticmethod

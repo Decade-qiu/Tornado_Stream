@@ -4,6 +4,7 @@ import sqlalchemy
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column  # 定义字段
 from sqlalchemy.dialects.mysql import *  # 导入字段类型
+from werkzeug.security import check_password_hash  # 检查密码
 
 # 1.创建模型继承的基类
 Base = declarative_base()
@@ -39,12 +40,14 @@ class User(Base):
     email = Column(VARCHAR(100), nullable=False, unique=True)  #
     phone = Column(VARCHAR(11), nullable=False, unique=True)  #
     sex = Column(TINYINT, nullable=True)  # 性别
-    xingzug = Column(TINYINT, nullable=True)  #
+    xingzuo = Column(TINYINT, nullable=True)  #
     face = Column(VARCHAR(100), nullable=True)  #
     info = Column(VARCHAR(600), nullable=True)  # 个性签名
     createdAt = Column(DATETIME, nullable=False)  # 创建时间
     updatedAt = Column(DATETIME, nullable=False)  # 修改时间
 
+    def check_pwd(self, pwd):
+        return check_password_hash(self.pwd, pwd)
 
 # 把models.py当作一个主执行文件运行
 if __name__ == "__main__":
