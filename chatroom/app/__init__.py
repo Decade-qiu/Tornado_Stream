@@ -9,7 +9,7 @@ from tornado.options import define, options
 from app.configs import configs  # 配置信息
 from app.urls import urls  # 路由映射
 
-define("port", type=int, default=8001, help="运行端口")
+define("port", type=int, default=8000, help="运行端口")
 
 
 # 1.定义自定义的应用

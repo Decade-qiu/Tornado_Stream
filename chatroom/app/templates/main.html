@@ -8,25 +8,35 @@
         </ol>
     </nav>
     <div class="card-columns">
-        <div class="card blog">
+        <div class="card video-list" id="blog">
             <img class="card-img-top mx-auto d-block video-img blur-up img-bk lazyloaded"
-                 data-src="holder.js/254x130">
+                         src="{{ static_url('images/blog.jpg') }}">
             <div class="card-body">
                 <span>个人博客</span>
             </div>
         </div>
-        <div class="card chat">
+        <div class="card video-list" id="chat">
             <img class="card-img-top mx-auto d-block video-img blur-up img-bk lazyloaded"
-                 data-src="holder.js/254x130">
+            src="{{ static_url('images/blog.jpg') }}">
             <div class="card-body">
                 <span>在线聊天室</span>
             </div>
         </div>
-        <div class="card lottery">
+        <div class="card video-list" id="lottery">
             <img class="card-img-top mx-auto d-block video-img blur-up img-bk lazyloaded"
-                 data-src="holder.js/254x130">
+            src="{{ static_url('images/blog.jpg') }}">
             <div class="card-body">
                 <span>抽奖</span>
+            </div>
+        </div>
+        
+    </div>
+    <div class="card-columns">
+        <div class="card video-list" id="stream">
+            <img class="card-img-top mx-auto d-block video-img blur-up img-bk lazyloaded"
+            src="{{ static_url('images/blog.jpg') }}">
+            <div class="card-body">
+                <span>站长直播</span>
             </div>
         </div>
     </div>
@@ -36,14 +46,17 @@
 {% block foot %}
 <script>
     $(document).ready(function () {
-        $(".blog").click(function () {
+        $("#blog").click(function () {
             location.href = "https://decade.net.cn/";
         });
-        $(".chat").click(function () {
+        $("#chat").click(function () {
             location.href = "/index/";
         });
-        $(".lottery").click(function () {
+        $("#lottery").click(function () {
             location.href = "/lottery/";
+        });
+        $("#stream").click(function () {
+            location.href = "/stream/";
         });
     });
 </script>

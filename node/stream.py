@@ -13,44 +13,36 @@ def cmd(cmd_string):
     print('COMMAND：{}'.format(cmd_string))
     subprocess.Popen(cmd_string, shell=True)
 
-# 日志信息
-logging.basicConfig(level=logging.INFO,
-                    format="%(asctime)s [%(levelname)s] %(message)s",
-                    datefmt="%Y/%m/%d %H:%M:%S")
-
 # 打开直播流
 
-#                ffmpeg -f dshow -i video="@device_pnp_\\?\usb#vid_04f2&pid_b67c&mi_00#6&26fcf372&1&0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv rtmp://localhost:1935/live/STREAM_NAME
+# ffmpeg -f dshow -i video='@device_pnp_\\?\usb#vid_04f2&pid_b67c&mi_00#6&26fcf372&1&0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global' -f dshow -i audio='@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{4AEC28D7-6B71-40EA-9CE2-8BED96C1541C}' -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv                                             rtmp://localhost:1935/live/STREAM_NAME
 
-# ffmpeg -f dshow -i video="USB2.0 PC CAMERA" -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv rtmp://127.0.0.1:1935/live/123
+# cmd("".join(lst))
+lst = [
+    "ffmpeg ",
+    "-f dshow -i video='Integrated Camera' ",
+    "-f dshow -i audio='麦克风阵列 (英特尔® 智音技术)' ",
+    "-vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv ",
+    "rtmp://localhost:1935/live/STREAM_NAME"
+]
+# ffmpeg -list_devices true -f dshow -i dummy
+# cap = cv2.VideoCapture("rtsp://127.0.0.1:8554/test")
 
-# sp = "E:\\DeskTop\\RSTP\\a.mp4"
-# cmd("E:\\DeskTop\\RSTP\\rtsp-simple-server.exe")
-# cmd(stream)
-
-cap = cv2.VideoCapture("rtsp://127.0.0.1:8554/test")
-
-fps = 30  # 直播流帧率
-maxDelay = 0.5  # 最大容许延时
-startTime = time()  # 开始时间
-frames = 0
-logging.info("已连接")
-while True:
-    frames += 1
-    ret, frame = cap.read()
-    # 延时小于最大容许延时才进行识别
-    # if frames > (time()-startTime-maxDelay)*fps:
-    cv2.imshow("frame", frame)
-    # else:
-    #     logging.info(f"已跳过一帧，当前{frames}，期望{int((time()-startTime-maxDelay)*fps)}")
-    # 按q退出
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-cv2.destroyAllWindows()
-cap.release()
-
-# ffmpeg -re -i E://DeskTop//RSTP//a.mp4 -c copy -f rtsp rtsp://127.0.0.1:8554/stream
-
-# ffmpeg -f dshow -i video="Integrated Camera" -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -rtsp_transport tcp -f rtsp rtsp://127.0.0.1:8554/test
-
-# rtsp-simple-server.exe
+# fps = 30  # 直播流帧率
+# maxDelay = 0.5  # 最大容许延时
+# startTime = time()  # 开始时间
+# frames = 0
+# logging.info("已连接")
+# while True:
+#     frames += 1
+#     ret, frame = cap.read()
+#     # 延时小于最大容许延时才进行识别
+#     # if frames > (time()-startTime-maxDelay)*fps:
+#     cv2.imshow("frame", frame)
+#     # else:
+#     #     logging.info(f"已跳过一帧，当前{frames}，期望{int((time()-startTime-maxDelay)*fps)}")
+#     # 按q退出
+#     if cv2.waitKey(1) & 0xFF == ord('q'):
+#         break
+# cv2.destroyAllWindows()
+# cap.release()
