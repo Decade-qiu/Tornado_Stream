@@ -10,11 +10,17 @@ from app.views.views_dm import DMHandler as dm  # 弹幕接口
 from app.views.views_chatroom import ChatRoomHandler as chatroom  # 聊天室ws接口
 from app.views.views_msg import MsgHandler as msg  # 聊天接口
 from sockjs.tornado import SockJSRouter
+from app.views.views_main import MainHandler as main
+from app.views.views_lottery import LotteryHandler as lottery
+from app.views.views_info import InfoHandler as info
 # from app.views.views_test import TestHandler as test
 
 # 定义视图和路由的映射规则
 urls = [
-    (r"/", index),
+    (r"/", main),
+    (r"/lottery/", lottery),
+    (r"/info/", info),
+    (r"/index/", index),
     (r"/playchat/", playchat),
     (r"/regist/", regist),
     (r"/login/", login),

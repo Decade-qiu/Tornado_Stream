@@ -30,7 +30,6 @@ class IndexHandler(CommonHandler):
                 model = session.query(Video).order_by(Video.createdAt.desc())
             data['video'] = self.page(model)
             data['q'] = q
-            # print(data)
         except Exception as e:
             session.rollback()
         else:
