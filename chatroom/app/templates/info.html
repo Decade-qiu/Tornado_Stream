@@ -51,10 +51,24 @@
                 </div>
                 <div class="form-group">
                     <a class="btn btn-primary"
-                    onclick="start()" style="color: aliceblue;">开始抽奖</a>
+                    onclick="start1()" style="color: aliceblue;">一等奖抽奖</a>
                     &nbsp;
                     <a class="btn btn-primary"
-                    onclick="stop()" style="color: aliceblue;">停止抽奖</a>
+                    onclick="stop1()" style="color: aliceblue;">停止抽奖</a>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-primary"
+                    onclick="start2()" style="color: aliceblue;">二等奖抽奖</a>
+                    &nbsp;
+                    <a class="btn btn-primary"
+                    onclick="stop2()" style="color: aliceblue;">停止抽奖</a>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-primary"
+                    onclick="start3()" style="color: aliceblue;">三等奖抽奖</a>
+                    &nbsp;
+                    <a class="btn btn-primary"
+                    onclick="stop3()" style="color: aliceblue;">停止抽奖</a>
                 </div>
             </form>
         </div>
@@ -71,14 +85,39 @@
     var whoGetTheMysteryAward=[];
     var w1='', w2='', w3='';
     var timer1, timer2, timer3, flag;
-    function start(){
-        creatNameForAward();
-    }
-    function creatNameForAward(){
-        flag=1;
+    function start1(){
         timer1 = setInterval(function(){
             document.getElementById('p1').innerText= getNameForAward(nam1.length);
         },50);
+    }
+    function stop1(){
+        clearInterval(timer1);
+        document.getElementById('p1').innerText=ff(nam1);
+        return null;
+    }
+    function start2(){
+        timer2 = setInterval(function(){
+            document.getElementById('p2').innerText= getNameForAward(nam2.length);
+        },50);
+    }
+    function stop2(){
+        clearInterval(timer2);
+        document.getElementById('p2').innerText=ff(nam2);
+        return null;
+    }
+    function start3(){
+        timer3 = setInterval(function(){
+            document.getElementById('p3').innerText= getNameForAward(nam3.length);
+        },50);
+    }
+    function stop3(){
+        clearInterval(timer3);
+        document.getElementById('p3').innerText=ff(nam3);
+        return null;
+    }
+    function creatNameForAward(){
+        flag=1;
+        
         timer2 = setInterval(function(){
             document.getElementById('p2').innerText= getNameForAward(nam2.length);
         },50);

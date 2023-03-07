@@ -15,7 +15,6 @@ class MainHandler(CommonHandler):
 
     @tornado.concurrent.run_on_executor
     def get_response(self):
-        # self.write("<h1>这是一个弹幕视频+在线聊天的项目！</h1>")
         data = dict(
             title="Decade"
         )

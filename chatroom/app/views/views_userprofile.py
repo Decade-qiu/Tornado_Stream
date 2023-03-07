@@ -31,6 +31,8 @@ class UserProfileHandler(AuthHandler):
     def post_response(self):
         form = UserProfileEditForm(self.fdata)
         res = dict(code=0)
+        print(form.role)
+        print(form.data['role'])
         if form.validate():
             # 保存用户信息
             if CRUD.save_user(form):

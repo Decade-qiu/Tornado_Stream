@@ -37,6 +37,7 @@ class User(Base):
     id = Column(INTEGER, primary_key=True)  # 编号
     name = Column(VARCHAR(20), nullable=False, unique=True)  # 昵称
     pwd = Column(VARCHAR(255), nullable=False)  #
+    role = Column(VARCHAR(255), nullable=False)  #
     email = Column(VARCHAR(100), nullable=False, unique=True)  #
     phone = Column(VARCHAR(11), nullable=False, unique=True)  #
     sex = Column(TINYINT, nullable=True)  # 性别

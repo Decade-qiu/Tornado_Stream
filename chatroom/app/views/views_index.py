@@ -21,15 +21,19 @@ class IndexHandler(CommonHandler):
         )
         session = ORM.db()
         q = self.get_argument("q", "")
+        data['video'] = {'data':None}
+        data['q'] = q
         try:
+            model = None
             if q:
                 model = session.query(Video).filter(
                     Video.name.like('%{}%'.format(q))
                 ).order_by(Video.createdAt.desc())
             else:
                 model = session.query(Video).order_by(Video.createdAt.desc())
-            data['video'] = self.page(model)
-            data['q'] = q
+            print(str(q)+" ")
+            print(model)
+            if model != None: data['video'] = self.page(model)
         except Exception as e:
             session.rollback()
         else:

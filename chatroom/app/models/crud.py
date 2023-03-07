@@ -102,7 +102,11 @@ class CRUD:
             user.face = form.data['face']
             user.info = form.data['info']
             user.updatedAt = dt()
+            user.role = form.data['role']
             session.add(user)
+            print(form.data['role'])
+            print(user.role)
+            print("!!!!!!!!!")
         except Exception as e:
             session.rollback()
         else:

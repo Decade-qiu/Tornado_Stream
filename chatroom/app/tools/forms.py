@@ -94,6 +94,12 @@ class UserProfileEditForm(Form):
             DataRequired("编号不能为空！")
         ]
     )
+    role = StringField(
+        "身份",
+        validators=[
+            DataRequired("身份不能为空！")
+        ]
+    )
     name = StringField(
         "昵称",
         validators=[
