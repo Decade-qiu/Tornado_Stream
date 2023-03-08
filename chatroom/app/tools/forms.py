@@ -85,7 +85,6 @@ class LoginForm(Form):
         if not data:
             raise ValidationError("密码不正确！")
 
-
 # 定义个人资料编辑验证表单模型
 class UserProfileEditForm(Form):
     id = IntegerField(
@@ -144,3 +143,25 @@ class UserProfileEditForm(Form):
             DataRequired("星座不能为空！")
         ]
     )
+
+# 定义直播创建验证表单模型
+class StreamBuildForm(Form):
+
+    title = StringField(
+        "直播标题",
+        validators=[
+            DataRequired("直播标题不能为空！")
+        ]
+    )
+
+    url = StringField(
+        "推流地址",
+        validators=[
+            DataRequired("推流地址不能为空！")
+        ]
+    )
+
+    def validate_url(self, field):
+        if not field.data.startswith("rtmp") and not field.data.startswith("rtsp"):
+            raise ValidationError("推流地址只支持rtmp和rtsp")
+

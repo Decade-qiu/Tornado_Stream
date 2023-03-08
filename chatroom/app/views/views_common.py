@@ -28,13 +28,12 @@ class CommonHandler(tornado.web.RequestHandler):
             )
             for k, v in data.items()
         }
-        # print(data)
         return data
 
     # 定义表单接受数据类型
     @property
     def fdata(self):
-        # print(MultiDict(self.params))
+        print(MultiDict(self.params))
         return MultiDict(self.params)
 
     # 定义获取账号名称
