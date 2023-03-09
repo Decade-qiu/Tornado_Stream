@@ -31,7 +31,6 @@ class Msg(Base):
     updatedAt = Column(DATETIME, nullable=False)  # 修改时间
 
 
-# 定义会员数据模型
 class User(Base):
     __tablename__ = "user"
     id = Column(INTEGER, primary_key=True)  # 编号
@@ -46,6 +45,18 @@ class User(Base):
     info = Column(VARCHAR(600), nullable=True)  # 个性签名
     createdAt = Column(DATETIME, nullable=False)  # 创建时间
     updatedAt = Column(DATETIME, nullable=False)  # 修改时间
+
+    def check_pwd(self, pwd):
+        return check_password_hash(self.pwd, pwd)
+
+class Stream(Base):
+    __tablename__ = "stream"
+    id = Column(INTEGER, primary_key=True)  # 编号
+    title = Column(VARCHAR(20), nullable=False, unique=True)  # 
+    url = Column(VARCHAR(255), nullable=False)  #
+    createdAt = Column(DATETIME, nullable=False)  # 创建时间
+    userid = Column(VARCHAR(20), nullable=True)
+    # updatedAt = Column(DATETIME, nullable=False)  # 修改时间
 
     def check_pwd(self, pwd):
         return check_password_hash(self.pwd, pwd)

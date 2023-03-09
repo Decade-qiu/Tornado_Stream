@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime  # 导入日期时间模块
-from app.models.models import User, Video, Msg
+from app.models.models import User, Video, Msg, Stream
 from app.tools.orm import ORM
 from werkzeug.security import generate_password_hash  # 生成哈希密码
 
@@ -177,3 +177,25 @@ class CRUD:
         finally:
             session.close()
         return data
+    
+    # 保存直播信息
+    @staticmethod
+    def save_stream(form):
+        session = ORM.db()
+        try:
+            stream = Stream(
+                title = form.data['title'],
+                url = form.data['url'],
+                createdAt = dt(),
+                userid = form.data['userid']
+            )
+            session.add(stream)
+        except Exception as e:
+            session.rollback()
+            return False
+        else:
+            session.commit()
+            return True
+        finally:
+            session.close()
+

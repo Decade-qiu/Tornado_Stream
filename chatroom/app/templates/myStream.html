@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-9 pad-right">
+    <div class="card">
+        <div class="card-header">
+            我的直播信息
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                {% set v = data['stream'] %}
+                {% if v['data'] %}
+                {% for val in v['data'] %}
+                <li class="list-group-item">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{ val.title }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ val.url }}
+                            </div>
+                            <div class="col-md-2">
+                                <div class="text-success">
+                                    进入
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% end %}
+                {% end %}
+            </ul>
+            <br>
+            <div class="form-group">
+                <a class="btn btn-primary" href="javascript:void(0)" id="btn-sub">创建直播</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}
+
+{% block foot %}
+<script src="{{ static_url('js/request.js') }}"></script>
+<script>
+    // $(document).ready(function () {
+    //     request('/build/', '/build/', ['title', 'url'], '创建成功！');
+    // });
+</script>
+{% end %}

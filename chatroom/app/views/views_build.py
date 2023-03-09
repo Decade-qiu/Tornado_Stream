@@ -20,7 +20,8 @@ class BuildHandler(CommonHandler):
     @tornado.concurrent.run_on_executor
     def get_response(self):
         data = dict(
-            title="直播创建"
+            title="直播创建",
+            name=self.name
         )
         self.html("build.html", data=data)
 
@@ -38,11 +39,9 @@ class BuildHandler(CommonHandler):
         if form.validate():
             # 验证通过
             # print(form.data['url'])
-            # 保存表单的数据到数据库user中去
-            # if CRUD.save_regist_user(form):
-            res["code"] = 1
+            if CRUD.save_stream(form):
+                res["code"] = 1
         else:
-            # 验证不通过
             res = form.errors
             res["code"] = 0
-        self.write(res)  # 返回json接口信息
+        self.write(res)  

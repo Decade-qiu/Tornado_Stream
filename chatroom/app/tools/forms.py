@@ -161,6 +161,13 @@ class StreamBuildForm(Form):
         ]
     )
 
+    userid = StringField(
+        "创建者名称",
+        validators=[
+            DataRequired("创建者名称不能为空！")
+        ]
+    )
+
     def validate_url(self, field):
         if not field.data.startswith("rtmp") and not field.data.startswith("rtsp"):
             raise ValidationError("推流地址只支持rtmp和rtsp")

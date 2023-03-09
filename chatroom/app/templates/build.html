@@ -11,6 +11,7 @@
                 <div class="form-group">
                     <label>标题</label>
                     {% raw xsrf_form_html() %}
+                    <input name="userid" type="hidden" value="{{ data['name'] }}">
                     <input class="form-control"
                            name="title"
                            placeholder="请输入直播标题！"
@@ -38,7 +39,7 @@
 <script src="{{ static_url('js/request.js') }}"></script>
 <script>
     $(document).ready(function () {
-        request('/build/', '/build/', ['title', 'url'], '创建成功！');
+        request('/build/', '/myStream/', ['title', 'url', 'userid'], '创建成功！');
     });
 </script>
 {% end %}

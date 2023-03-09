@@ -15,6 +15,7 @@ from app.views.views_lottery import LotteryHandler as lottery
 from app.views.views_info import InfoHandler as info
 from app.views.views_stream import StreamHandler as stream
 from app.views.views_build import BuildHandler as build
+from app.views.views_myStream import myStreamHandler as myStream
 # from app.views.views_test import TestHandler as test
 
 # 定义视图和路由的映射规则
@@ -22,6 +23,7 @@ urls = [
     (r"/", main),
     (r"/stream/", stream),
     (r"/build/", build),
+    (r"/myStream/", myStream),
     (r"/lottery/", lottery),
     (r"/info/", info),
     (r"/index/", index),
