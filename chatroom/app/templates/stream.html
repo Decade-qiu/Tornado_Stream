@@ -84,7 +84,7 @@
         var videoElement = document.getElementById('videoElement');
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
-            url: 'http://localhost:8001/live/STREAM_NAME.flv'
+            url: 'http://127.0.0.1:80/live?port=1935&app=myapp&stream=STREAM_NAME'
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
