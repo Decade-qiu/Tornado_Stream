@@ -17,6 +17,7 @@ def cmd(cmd_string):
 # http://127.0.0.1:80/live?port=1935&app=myapp&stream=STREAM_NAME
 
 # start nginx -c conf/http-flv.conf
+# nginx -s stop -c conf/http-flv.conf
 
 # python -u "e:\DeskTop\RSTP\chatroom\manager.py"
 

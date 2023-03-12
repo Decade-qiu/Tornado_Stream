@@ -8,6 +8,7 @@
         </div>
         <div class="card-body">
             <ul class="list-group">
+                {% raw xsrf_form_html() %}
                 {% set v = data['stream'] %}
                 {% if v['data'] %}
                 {% for val in v['data'] %}
@@ -21,9 +22,7 @@
                                 {{ val.url }}
                             </div>
                             <div class="col-md-2">
-                                <div class="text-success">
-                                    进入
-                                </div>
+                                <a class="btn btn-success stream" urlId="{{ val.url }}">进入</a>
                             </div>
                         </div>
                     </div>
@@ -43,8 +42,24 @@
 {% block foot %}
 <script src="{{ static_url('js/request.js') }}"></script>
 <script>
-    // $(document).ready(function () {
-    //     request('/build/', '/build/', ['title', 'url'], '创建成功！');
-    // });
+    $(document).ready(function () {
+        // var obj = document.getElementById('url').innerText;
+        // console.log(obj);
+        $(".stream").click(function(){
+            var locurl = $(this).attr('urlId');
+            $.ajax({
+                url: "/stream/",
+                data: {url : locurl},
+                dataType: "json",
+                type: "POST",
+                success: function (res) {
+                    location.href = "/stream/?"+"app="+res['app']+"&"+"name="+res['name']
+                },
+                error: function (res) {
+                    console.log(res);
+                }
+            });
+        });
+    });
 </script>
 {% end %}
