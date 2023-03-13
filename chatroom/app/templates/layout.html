@@ -13,11 +13,9 @@
 
 <nav class="navbar navbar-dark bg-primary justify-content-between">
     <div class="container">
-        <a class="navbar-brand" id="site_name" href="/">张静宇是混蛋.com</a>
+        <a class="navbar-brand" id="site_name" href="/">2027406022.com</a>
         <form class="form-inline">
             {% if handler.name %}
-            <a href="/build/" class="text-warning" style="color:gainsboro">开播</a>
-            &nbsp;
             <a href="/userprofile/" class="text-warning">{{ handler.name }}</a>
             &nbsp;
             <a href="/logout/" class="text-danger">退出</a>
@@ -33,7 +31,7 @@
 <div class="container" id="main">
     <div class="row">
         {% block content %}{% end %}
-        <div class="col-md-3 pad-left">
+        <div class="col-md-2 pad-left">
             <div class="input-group mb-3">
                 <input type="text" id="input_q" class="form-control" placeholder="请输入搜索内容！"
                        aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -43,55 +41,32 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    技术架构
+                    快捷导航
                 </div>
                 <div class="card-body">
-                    <table class="table table-sm">
-                        <tr>
-                            <td class="text-primary" style="width: 50%">编程语言：</td>
-                            <td class="text-danger">Python</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">数据库：</td>
-                            <td class="text-danger">MySQL</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">内存缓存：</td>
-                            <td class="text-danger">Redis</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">反向代理：</td>
-                            <td class="text-danger">Nginx</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">操作系统：</td>
-                            <td class="text-danger">CentOS</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">后端框架：</td>
-                            <td class="text-danger">Tornado</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">表单验证：</td>
-                            <td class="text-danger">WTForms</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">数据库ORM：</td>
-                            <td class="text-danger">SQLAlchemy</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">加密工具：</td>
-                            <td class="text-danger">Werkzeug</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">WebSocket通信：</td>
-                            <td class="text-danger">SockJS-Tornado</td>
-                        </tr>
-                        <tr>
-                            <td class="text-primary">前端界面：</td>
-                            <td class="text-danger">HTML/JS/CSS</td>
-                        </tr>
-                    </table>
+                    <button type="button" class="btn btn-info"
+                    onclick="window.location.href='/build/'"
+                    >直播创建</button>
+                    <br><br>
+                    <button type="button" class="btn btn-info"
+                    onclick="window.location.href='/myStream/'"
+                    >我的直播信息</button> 
+                    <br><br>
+                    <button type="button" class="btn btn-info"
+                    onclick="window.location.href='#'"
+                    >课程列表</button> 
+                    <br><br>
+                    <button type="button" class="btn btn-info"
+                    onclick="window.location.href='#'"
+                    >帮助</button> 
+                    <br><br>
+                    <button type="button" class="btn btn-info"
+                    onclick="window.location.href='#'"
+                    >举报</button> 
+                    <br><br>
+                    <button type="button" class="btn btn-info"
+                    onclick="window.location.href='#'"
+                    >客服</button> 
                 </div>
             </div>
         </div>
@@ -107,11 +82,11 @@
             </div>
             <div class="col-md-4">
                 <h5>Decade</h5>
-                <p class="info-text">— 人生苦短，我用Python！</p>
+                <!-- <p class="info-text">— 人生苦短，我用Python！</p>
                 <p class="info-text">微信：13700632835</p>
                 <p class="info-text">手机：13700632835</p>
                 <p class="info-text">邮箱：3237550600@qq.com</p>
-                <p class="info-text">编程爱好者，多年丰富的项目经验，擅长python、php、golang、centos、reactnative等技术。</p>
+                <p class="info-text">编程爱好者，多年丰富的项目经验，擅长python、php、golang、centos、reactnative等技术。</p> -->
             </div>
             <div class="col-md-6">
                 <div class="row">

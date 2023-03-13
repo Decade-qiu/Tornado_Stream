@@ -15,6 +15,7 @@ $(document).ready(function () {
         if (data.code == 2) {
             /*判断用户，是自己还是别人*/
             if (data.name == name) {
+                // data.JSON();
                 //自己
                 html += "<div class=\"row\">\n" +
                     "                        <div class=\"col-md-3\"></div>\n" +
@@ -87,6 +88,7 @@ $(document).ready(function () {
                     var msg_arr = res.data;
                     for (var k in msg_arr) {
                         append_msg(name, msg_arr[k])
+                        // console.log(name, msg_arr[k].name, msg_arr[k].content)
                     }
                     /*加载完所有的消息，再来进入房间*/
                     user_enter_tip();

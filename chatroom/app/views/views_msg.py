@@ -21,6 +21,7 @@ class MsgHandler(CommonHandler):
         result = []
         for v in data:
             result.append(json.loads(v.content))  # 转化为字典追加
+        print(len(data))
         self.write(
             dict(
                 data=result

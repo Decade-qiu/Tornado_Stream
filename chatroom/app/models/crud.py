@@ -169,7 +169,7 @@ class CRUD:
         session = ORM.db()
         data = None
         try:
-            data = session.query(Msg).order_by(Msg.createdAt.desc()).limit(200).all()
+            data = session.query(Msg).order_by(Msg.createdAt.asc()).limit(200).all()
         except Exception as e:
             session.rollback()
         else:
